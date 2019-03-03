@@ -25,18 +25,18 @@ def hotPointList(i):
     top_title = top_info[0].split(">")[1]
     # 提取热度数据
     top_hotNum = top_info[2].split(">")[1]
-    info = top_varurl, top_title, top_hotNum
+    info = urlMain + top_varurl, top_title, top_hotNum
 
     # 测试输出
-    # print(info)
+    print(info)
 
     return info
     # info中第一个为链接 第二个为话题标题 第三为热度
 
 
-# 解析首个热门微博
+# 解析话题搜索页内热门微博
 def hotTexturl(url):
-    html = urlopen(urlMain + url)
+    html = urlopen(url)
     html_BSObj = BeautifulSoup(html, "lxml")  # 链接对象
     # 查找父节点 得到热门微博
     find_src = html_BSObj.find(attrs={"class": "icon-title icon-star"}).parent.parent.parent.parent
@@ -73,63 +73,102 @@ def weiBoInfo(url, driver):
     time.sleep(15)
     page = driver.page_source  # 保存网页源码
     html_BSObj = BeautifulSoup(page, "lxml")  # 链接对象
-    find_text = html_BSObj.find(attrs={"class": "WB_text W_f14"})
-    find_text = re.findall('(?<=/.>).*?(?=<)', str(find_text))  # (?<=#</a>)前项匹配#</a> .*?匹配中间任意字符防止出界 (?=<)后项匹配
+    find_text = html_BSObj.find(attrs={"class": "WB_text W_f14"})  # 查找标题
+    find_text = find_text.contents[0]  # 录入标题
 
-    find_commentinfo = html_BSObj.findAll(attrs={"class": "list_li S_line1 clearfix"})
-    find_Obj = BeautifulSoup(str(find_commentinfo), "lxml")
-    find_ID = find_Obj.findAll(attrs={"class": "WB_text"})  # 提取 ID和评论并清洗
-    find_Time = find_Obj.find_all(attrs={"class": "WB_from S_txt2"})  # 提取时间并清洗
-    find_comment = re.findall('(?<=</a>：).*?(?=<)', str(find_ID))  # 清洗评论
-    find_ID = re.findall('(?<=usercard=).*?(?=</a>)',str(find_ID))#清洗ID
+    find_commentinfo = html_BSObj.findAll(attrs={"class": "list_li S_line1 clearfix"})  # 定位评论区
 
-    find_Time=re.findall('(?<=S_txt2">).*?(?=</div>)',str(find_Time))
-
-    timea = time.strftime("%Y-%m-%d-%H:%M", time.localtime())#获取当前时间
+    # 定义数据列表
+    find_IDList = []
+    find_commentList = []
+    find_TimeList = []
     # 测试输出
-    #print("微博内容为：" + str(find_text))
+    '''
+    # print(len(find_commentinfo[0]))
+    for i in range(len(find_commentinfo)):
+        print(str(i) + "---" + str(find_commentinfo[i].contents))
+    '''
+    for i in range(len(find_commentinfo)):
+        try:
+            find_commentChild = find_commentinfo[i].contents[9]  # 定位主评论区
+            find_Obj = BeautifulSoup(str(find_commentChild), "lxml")
+            find_ID = find_Obj.find(attrs={"class": "WB_text"})  # 提取 ID和评论并清洗
+            find_Time = find_Obj.find(attrs={"class": "WB_from S_txt2"})  # 提取时间并清洗
+            find_commentList.append(re.findall('(?<=</a>：).*?(?=<)', str(find_ID)))  # 清洗评论
+            find_IDList.append(re.findall('(?<=usercard=).*?(?=</a>)', str(find_ID)))  # 清洗ID
 
-    # print(find_comment)
-    #print(find_ID)
-    #print(find_comment)
+            find_TimeList.append(re.findall('(?<=S_txt2">).*?(?=</div>)', str(find_Time)))
+            #print(str(i) + "---")
+        except:
+            continue
 
-
-    #print(find_Time)
+    # 测试输出
+    # print("微博内容为：" + str(find_text))
+    # print(find_commentinfo)
+    #print(find_IDList)
+    #print(find_commentList)
+    #print(find_TimeList)
+    #print(len(find_IDList), len(find_commentList), len(find_TimeList))
     # 写入文件
 
     with open("./data/ocrData.txt", 'at', encoding='utf-8') as f:  # wt为不能追加 此处用at
-        f.writelines("时间为：" + str(timea) + "\n")
-        f.writelines("微博内容为：" + str(find_text) + "\n")
-        if (len(find_ID) == len(find_comment) and len(find_Time)):
+        f.writelines(str(find_text) + "\n" + "--------------------" + "\n")
+        if (len(find_IDList) == len(find_commentList) and len(find_TimeList)):
             print("数据写入--OK!")
         else:
             print("网络出现延时 数据可能不完整！")
-        num=0
-        if(len(find_ID)>len(find_comment)):
-            num=len(find_comment)
-        elif(len(find_ID)<len(find_comment)):
-            num=len(find_ID)
+        num = 0
+        if (len(find_IDList) > len(find_commentList)):
+            num = len(find_commentList)
+        elif (len(find_IDList) < len(find_commentList)):
+            num = len(find_IDList)
         else:
-            num=len(find_Time)
+            num = len(find_TimeList)
         for i in range(num):
-            f.write(str(find_ID[i])+"\t")
-            f.write(str(find_comment[i])+"\t")
-            f.writelines(str(find_Time[i])+"\n")
+            f.write(str(find_IDList[i]) + "\t")
+            f.write(str(find_commentList[i]) + "\t")
+            f.writelines(str(find_TimeList[i]) + "\n")
         print("数据写入--OK!")
 
-# 启动火狐浏览器
-firefoxOpt = Options()  # 载入配置
-firefoxOpt.add_argument("--headless")
-print("启动浏览器ing...")
-driver = webdriver.Firefox(workPath() + 'exe/core/', firefox_options=firefoxOpt)
-for i in range(1,40):
 
-    try:
-        info = hotPointList(i)  # 加载热点排行榜url传递给热门微博文章提取函数
-        print("|第"+str(i)+"个题标题为：" + info[1] + "|热度为：" + info[2])
-        hoturl = hotTexturl(info[0])  # 热点话题链接
+# 启动火狐浏览器
+def __init__():
+    firefoxOpt = Options()  # 载入配置
+    # firefoxOpt.add_argument("--headless")
+    print("启动浏览器ing...")
+    driver = webdriver.Firefox(workPath() + 'exe/core/', firefox_options=firefoxOpt)
+
+    #生产模式
+    for i in range(1,20):
+    
+        try:
+            info = hotPointList(i)  # 加载热点排行榜url传递给热门微博文章提取函数
+            writeinfo=("--------------------"+"\n"+"|第"+str(i)+"个题标题为：" + info[1] + "|热度为：" + info[2])
+            timea = time.strftime("%Y-%m-%d-%H:%M", time.localtime())  # 获取当前时间
+            with open("./data/ocrData.txt", 'at', encoding='utf-8') as f:  # wt为不能追加 此处用at
+                f.writelines("\n"+"时间为：" + str(timea) + "\n")
+                f.writelines("微博内容为：" + writeinfo + "\n")
+            hoturl = hotTexturl(info[0])  # 热点话题链接
+    
+        # 话题链接传入
+            weiBoInfo(hoturl, driver)
+        except:
+            print("第%s出现错误 错误代码Error---000" %i)
+            continue
+
+    # 调试模式
+    '''
+    info = hotPointList(1)  # 加载热点排行榜url传递给热门微博文章提取函数
+    writeinfo = ("--------------------" + "\n" + "|第" + str(1) + "个题标题为：" + info[1] + "|热度为：" + info[2])
+
+    timea = time.strftime("%Y-%m-%d-%H:%M", time.localtime())  # 获取当前时间
+    with open("./data/ocrData.txt", 'at', encoding='utf-8') as f:  # wt为不能追加 此处用at
+        f.writelines("时间为：" + str(timea) + "\n")
+        f.writelines("微博内容为：" + writeinfo + "\n")
+    hoturl = hotTexturl(info[0])  # 热点话题链接
 
     # 话题链接传入
-        weiBoInfo(hoturl, driver)
-    except:
-        continue
+    weiBoInfo(hoturl, driver)
+    '''
+
+__init__()
