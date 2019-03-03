@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
 import time
-from scriptTool import workPath
+import scriptTool
 import re
 
 urlMain = "https://s.weibo.com"
@@ -74,6 +74,10 @@ def weiBoInfo(url, driver):
     page = driver.page_source  # 保存网页源码
     html_BSObj = BeautifulSoup(page, "lxml")  # 链接对象
     find_text = html_BSObj.find(attrs={"class": "WB_text W_f14"})  # 查找标题
+    print(find_text)
+    for i in range(len(find_text.contents)):
+        print(str(i) + "---\n" + str(find_text.contents[i]))
+
     find_text = find_text.contents[0]  # 录入标题
 
     find_commentinfo = html_BSObj.findAll(attrs={"class": "list_li S_line1 clearfix"})  # 定位评论区
@@ -82,12 +86,11 @@ def weiBoInfo(url, driver):
     find_IDList = []
     find_commentList = []
     find_TimeList = []
-    # 测试输出
-    '''
-    # print(len(find_commentinfo[0]))
-    for i in range(len(find_commentinfo)):
-        print(str(i) + "---" + str(find_commentinfo[i].contents))
-    '''
+
+
+    #for i in range(len(find_commentinfo)):
+    #    print(str(i) + "---" + str(find_commentinfo[i].contents))
+
     for i in range(len(find_commentinfo)):
         try:
             find_commentChild = find_commentinfo[i].contents[9]  # 定位主评论区
@@ -103,6 +106,7 @@ def weiBoInfo(url, driver):
             continue
 
     # 测试输出
+    # scriptTool.debug_SEcontents_C(find_text)
     # print("微博内容为：" + str(find_text))
     # print(find_commentinfo)
     # print(find_IDList)
@@ -133,43 +137,50 @@ def weiBoInfo(url, driver):
 
 # 启动火狐浏览器
 def __init__():
-    firefoxOpt = Options()  # 载入配置
-    # firefoxOpt.add_argument("--headless")
-    print("启动浏览器ing...")
-    driver = webdriver.Firefox(workPath() + 'exe/core/', firefox_options=firefoxOpt)
+
 
     # 生产模式
-    for i in range(1, 20):
+    def work():
+        firefoxOpt = Options()  # 载入配置
+        firefoxOpt.add_argument("--headless")
+        print("启动浏览器ing...")
+        driver = webdriver.Firefox(scriptTool.workPath() + 'exe/core/', firefox_options=firefoxOpt)
+        for i in range(1, 20):
 
-        try:
-            info = hotPointList(i)  # 加载热点排行榜url传递给热门微博文章提取函数
-            writeinfo = ("--------------------" + "\n" + "|第" + str(i) + "个题标题为：" + info[1] + "|热度为：" + info[2])
-            timea = time.strftime("%Y-%m-%d-%H:%M", time.localtime())  # 获取当前时间
-            with open("./data/Data.txt", 'at', encoding='utf-8') as f:  # wt为不能追加 此处用at
-                f.writelines("\n" + "时间为：" + str(timea) + "\n")
-                f.writelines("微博内容为：" + writeinfo + "\n")
-            hoturl = hotTexturl(info[0])  # 热点话题链接
+            try:
+                info = hotPointList(i)  # 加载热点排行榜url传递给热门微博文章提取函数
+                writeinfo = ("--------------------" + "\n" + "|第" + str(i) + "个题标题为：" + info[1] + "|热度为：" + info[2])
+                timea = time.strftime("%Y-%m-%d-%H:%M", time.localtime())  # 获取当前时间
+                with open("./data/Data.txt", 'at', encoding='utf-8') as f:  # wt为不能追加 此处用at
+                    f.writelines("\n" + "时间为：" + str(timea) + "\n")
+                    f.writelines("微博内容为：" + writeinfo + "\n")
+                hoturl = hotTexturl(info[0])  # 热点话题链接
 
-            # 话题链接传入
-            weiBoInfo(hoturl, driver)
-        except:
-            print("第%s出现错误 错误代码Error---000" % i)
-            continue
+                # 话题链接传入
+                weiBoInfo(hoturl, driver)
+            except:
+                print("第%s出现错误 错误代码Error---000\n请检查网络至新浪服务器的连接或进行等待" % i)
+                continue
 
     # 调试模式
-    '''
-    info = hotPointList(1)  # 加载热点排行榜url传递给热门微博文章提取函数
-    writeinfo = ("--------------------" + "\n" + "|第" + str(1) + "个题标题为：" + info[1] + "|热度为：" + info[2])
+    def debug():
+        print("启动浏览器ing...")
+        driver = webdriver.Firefox(scriptTool.workPath() + 'exe/core/')
+        info = hotPointList(1)  # 加载热点排行榜url传递给热门微博文章提取函数
+        writeinfo = ("--------------------" + "\n" + "|第" + str(1) + "个题标题为：" + info[1] + "|热度为：" + info[2])
 
-    timea = time.strftime("%Y-%m-%d-%H:%M", time.localtime())  # 获取当前时间
-    with open("./data/ocrData.txt", 'at', encoding='utf-8') as f:  # wt为不能追加 此处用at
-        f.writelines("时间为：" + str(timea) + "\n")
-        f.writelines("微博内容为：" + writeinfo + "\n")
-    hoturl = hotTexturl(info[0])  # 热点话题链接
+        timea = time.strftime("%Y-%m-%d-%H:%M", time.localtime())  # 获取当前时间
+        with open("./data/ocrData.txt", 'at', encoding='utf-8') as f:  # wt为不能追加 此处用at
+            f.writelines("时间为：" + str(timea) + "\n")
+            f.writelines("微博内容为：" + writeinfo + "\n")
+        hoturl = hotTexturl(info[0])  # 热点话题链接
 
-    # 话题链接传入
-    weiBoInfo(hoturl, driver)
-    '''
+        # 话题链接传入
+        weiBoInfo(hoturl, driver)
+
+    #模式选择
+    debug()
 
 
 __init__()
+
