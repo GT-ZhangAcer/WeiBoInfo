@@ -98,17 +98,17 @@ def weiBoInfo(url, driver):
             find_IDList.append(re.findall('(?<=usercard=).*?(?=</a>)', str(find_ID)))  # 清洗ID
 
             find_TimeList.append(re.findall('(?<=S_txt2">).*?(?=</div>)', str(find_Time)))
-            #print(str(i) + "---")
+            # print(str(i) + "---")
         except:
             continue
 
     # 测试输出
     # print("微博内容为：" + str(find_text))
     # print(find_commentinfo)
-    #print(find_IDList)
-    #print(find_commentList)
-    #print(find_TimeList)
-    #print(len(find_IDList), len(find_commentList), len(find_TimeList))
+    # print(find_IDList)
+    # print(find_commentList)
+    # print(find_TimeList)
+    # print(len(find_IDList), len(find_commentList), len(find_TimeList))
     # 写入文件
 
     with open("./data/Data.txt", 'at', encoding='utf-8') as f:  # wt为不能追加 此处用at
@@ -138,22 +138,22 @@ def __init__():
     print("启动浏览器ing...")
     driver = webdriver.Firefox(workPath() + 'exe/core/', firefox_options=firefoxOpt)
 
-    #生产模式
-    for i in range(1,20):
-    
+    # 生产模式
+    for i in range(1, 20):
+
         try:
             info = hotPointList(i)  # 加载热点排行榜url传递给热门微博文章提取函数
-            writeinfo=("--------------------"+"\n"+"|第"+str(i)+"个题标题为：" + info[1] + "|热度为：" + info[2])
+            writeinfo = ("--------------------" + "\n" + "|第" + str(i) + "个题标题为：" + info[1] + "|热度为：" + info[2])
             timea = time.strftime("%Y-%m-%d-%H:%M", time.localtime())  # 获取当前时间
             with open("./data/Data.txt", 'at', encoding='utf-8') as f:  # wt为不能追加 此处用at
-                f.writelines("\n"+"时间为：" + str(timea) + "\n")
+                f.writelines("\n" + "时间为：" + str(timea) + "\n")
                 f.writelines("微博内容为：" + writeinfo + "\n")
             hoturl = hotTexturl(info[0])  # 热点话题链接
-    
-        # 话题链接传入
+
+            # 话题链接传入
             weiBoInfo(hoturl, driver)
         except:
-            print("第%s出现错误 错误代码Error---000" %i)
+            print("第%s出现错误 错误代码Error---000" % i)
             continue
 
     # 调试模式
@@ -170,5 +170,6 @@ def __init__():
     # 话题链接传入
     weiBoInfo(hoturl, driver)
     '''
+
 
 __init__()
