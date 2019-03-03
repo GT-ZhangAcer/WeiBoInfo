@@ -28,7 +28,7 @@ def hotPointList(i):
     info = urlMain + top_varurl, top_title, top_hotNum
 
     # 测试输出
-    print(info)
+    print("OUT_INFO_Url", info[0], "\nOUT_INFO_Title", info[1], "\nOUT_INFO_热度", info[2])
 
     return info
     # info中第一个为链接 第二个为话题标题 第三为热度
@@ -67,19 +67,14 @@ def hotTexturl_NoKey(url):
 
 def weiBoInfo(url, driver):
     driver.get(url)
-    print("正在等待JS...")
+    print("ACT_INFO:等待JS...")
     driver.implicitly_wait(10)  # 等待JS加载时间
-    print("正在等待Driver...")
+    print("ACT_INFO:等待Driver...")
     time.sleep(15)
     page = driver.page_source  # 保存网页源码
     html_BSObj = BeautifulSoup(page, "lxml")  # 链接对象
     find_text = html_BSObj.find(attrs={"class": "WB_text W_f14"})  # 查找标题
-    print(find_text)
-    for i in range(len(find_text.contents)):
-        print(str(i) + "---\n" + str(find_text.contents[i]))
-
     find_text = find_text.contents[0]  # 录入标题
-
     find_commentinfo = html_BSObj.findAll(attrs={"class": "list_li S_line1 clearfix"})  # 定位评论区
 
     # 定义数据列表
@@ -87,8 +82,7 @@ def weiBoInfo(url, driver):
     find_commentList = []
     find_TimeList = []
 
-
-    #for i in range(len(find_commentinfo)):
+    # for i in range(len(find_commentinfo)):
     #    print(str(i) + "---" + str(find_commentinfo[i].contents))
 
     for i in range(len(find_commentinfo)):
@@ -112,15 +106,15 @@ def weiBoInfo(url, driver):
     # print(find_IDList)
     # print(find_commentList)
     # print(find_TimeList)
-    # print(len(find_IDList), len(find_commentList), len(find_TimeList))
+    print("OUT_INFO_Len:", len(find_IDList), len(find_commentList), len(find_TimeList))
     # 写入文件
 
     with open("./data/Data.txt", 'at', encoding='utf-8') as f:  # wt为不能追加 此处用at
-        f.writelines(str(find_text) + "\n" + "--------------------" + "\n")
+        f.writelines(str(find_text).strip() + "\n" + "--------------------" + "\n")
         if (len(find_IDList) == len(find_commentList) and len(find_TimeList)):
-            print("数据写入--OK!")
+            print("OUT_INFO_数据写入:--OK!")
         else:
-            print("网络出现延时 数据可能不完整！")
+            print("OUT_INFO_网络出现延时:数据可能不完整！")
         num = 0
         if (len(find_IDList) > len(find_commentList)):
             num = len(find_commentList)
@@ -132,20 +126,20 @@ def weiBoInfo(url, driver):
             f.write(str(find_IDList[i]) + "\t")
             f.write(str(find_commentList[i]) + "\t")
             f.writelines(str(find_TimeList[i]) + "\n")
-            print("数据写入--OK!")
+
+            if (i == num):
+                print("OUT_INFO_数据写入:--OK!")
 
 
 # 启动火狐浏览器
 def __init__():
-
-
     # 生产模式
     def work():
         firefoxOpt = Options()  # 载入配置
         firefoxOpt.add_argument("--headless")
-        print("启动浏览器ing...")
+        print("ACT_INFO:启动浏览器ing...")
         driver = webdriver.Firefox(scriptTool.workPath() + 'exe/core/', firefox_options=firefoxOpt)
-        for i in range(1, 20):
+        for i in range(1, 30):
 
             try:
                 info = hotPointList(i)  # 加载热点排行榜url传递给热门微博文章提取函数
@@ -164,13 +158,13 @@ def __init__():
 
     # 调试模式
     def debug():
-        print("启动浏览器ing...")
+        print("ACT_INFO:启动浏览器ing...")
         driver = webdriver.Firefox(scriptTool.workPath() + 'exe/core/')
         info = hotPointList(1)  # 加载热点排行榜url传递给热门微博文章提取函数
         writeinfo = ("--------------------" + "\n" + "|第" + str(1) + "个题标题为：" + info[1] + "|热度为：" + info[2])
 
         timea = time.strftime("%Y-%m-%d-%H:%M", time.localtime())  # 获取当前时间
-        with open("./data/ocrData.txt", 'at', encoding='utf-8') as f:  # wt为不能追加 此处用at
+        with open("./data/Data.txt", 'at', encoding='utf-8') as f:  # wt为不能追加 此处用at
             f.writelines("时间为：" + str(timea) + "\n")
             f.writelines("微博内容为：" + writeinfo + "\n")
         hoturl = hotTexturl(info[0])  # 热点话题链接
@@ -178,9 +172,8 @@ def __init__():
         # 话题链接传入
         weiBoInfo(hoturl, driver)
 
-    #模式选择
-    debug()
+    # 模式选择
+    work()
 
 
 __init__()
-
