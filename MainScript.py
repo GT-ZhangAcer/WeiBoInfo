@@ -111,7 +111,7 @@ def weiBoInfo(url, driver):
     #print(len(find_IDList), len(find_commentList), len(find_TimeList))
     # 写入文件
 
-    with open("./data/ocrData.txt", 'at', encoding='utf-8') as f:  # wt为不能追加 此处用at
+    with open("./data/Data.txt", 'at', encoding='utf-8') as f:  # wt为不能追加 此处用at
         f.writelines(str(find_text) + "\n" + "--------------------" + "\n")
         if (len(find_IDList) == len(find_commentList) and len(find_TimeList)):
             print("数据写入--OK!")
@@ -128,7 +128,7 @@ def weiBoInfo(url, driver):
             f.write(str(find_IDList[i]) + "\t")
             f.write(str(find_commentList[i]) + "\t")
             f.writelines(str(find_TimeList[i]) + "\n")
-        print("数据写入--OK!")
+            print("数据写入--OK!")
 
 
 # 启动火狐浏览器
@@ -145,7 +145,7 @@ def __init__():
             info = hotPointList(i)  # 加载热点排行榜url传递给热门微博文章提取函数
             writeinfo=("--------------------"+"\n"+"|第"+str(i)+"个题标题为：" + info[1] + "|热度为：" + info[2])
             timea = time.strftime("%Y-%m-%d-%H:%M", time.localtime())  # 获取当前时间
-            with open("./data/ocrData.txt", 'at', encoding='utf-8') as f:  # wt为不能追加 此处用at
+            with open("./data/Data.txt", 'at', encoding='utf-8') as f:  # wt为不能追加 此处用at
                 f.writelines("\n"+"时间为：" + str(timea) + "\n")
                 f.writelines("微博内容为：" + writeinfo + "\n")
             hoturl = hotTexturl(info[0])  # 热点话题链接

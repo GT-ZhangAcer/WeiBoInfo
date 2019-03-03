@@ -47,11 +47,11 @@ data--数据存放目录
 
 **返回对象**：列表[热点链接、话题、热度]
 
-例：[https://s.weibo.com/weibo?q=%23%E5%A7%9C%E4%B8%B9%E5%B0%BC%E5%B0%94%E8%A6%81%E6%B1%82%E8%A7%A3%E7%BA%A6%23&;Refer=top
+例：['https://s.weibo.com/weibo?q=%23%E5%A7%9C%E4%B8%B9%E5%B0%BC%E5%B0%94%E8%A6%81%E6%B1%82%E8%A7%A3%E7%BA%A6%23&;Refer=top',
 
-姜丹尼尔要求解约
+'姜丹尼尔要求解约',
 
-930085]
+'930085']
 
 2、`MainScript.hotTexturl 解析话题搜索页内热门微博Url`
 
