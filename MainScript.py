@@ -160,7 +160,7 @@ def __init__():
             return "004"
 
         Num = input("OUT_INFO:输入需要抓取话题的数量\nIN_INT_Number:")
-        for i in range(1, int(Num)):
+        for i in range(1, int(Num)+1):
             print("OUT_INFO_序列:正在抓取第%s个话题,当前进度为：" % i + str(
                 str(float(i) / float(Num) * 100)[:3]) + "%")  # 此处表达式为输出百分比
             # 抓取信息
