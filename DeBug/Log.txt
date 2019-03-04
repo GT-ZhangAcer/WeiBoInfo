@@ -1,0 +1,231 @@
+ACT_INFO:启动浏览器ing...
+当前工作目录为：F:/WeiBoInfo/
+F:/WeiBoInfo/MainScript.py:145: DeprecationWarning: use options instead of firefox_options
+  driver = webdriver.Firefox(scriptTool.workPath() + 'exe/core/', firefox_options=firefoxOpt)
+OUT_INFO:浏览器启动成功！
+OUT_INFO:输入需要抓取话题的数量
+IN_INT_Number:OUT_INFO_序列:正在抓取第1个话题,当前进度为：3.%
+OUT_INFO_Url: https://s.weibo.com/weibo?q=%23%E6%9D%8E%E5%86%B0%E5%86%B0%E6%9D%8E%E9%9B%AA%23&amp;Refer=top 
+OUT_INFO_Title: 李冰冰李雪 
+OUT_INFO_热度: 1204824
+ACT_INFO:等待JS...
+ACT_INFO:等待Driver...
+OUT_INFO_Len: 2 2 2
+OUT_INFO_数据写入:--OK!
+OUT_INFO_序列:正在抓取第2个话题,当前进度为：6.%
+===ERROR_000===:第2个话题抓取出现错误
+请检查网络至新浪服务器的连接或进行等待
+OUT_INFO_序列:正在抓取第3个话题,当前进度为：10%
+===ERROR_000===:第3个话题抓取出现错误
+请检查网络至新浪服务器的连接或进行等待
+OUT_INFO_序列:正在抓取第4个话题,当前进度为：13%
+OUT_INFO_Url: https://s.weibo.com/weibo?q=%23%E5%BB%BA%E8%AE%AE%E6%98%A5%E8%8A%82%E5%81%87%E6%9C%9F%E5%BB%B6%E9%95%BF%E4%B8%A4%E5%88%B0%E4%B8%89%E5%A4%A9%23&amp;Refer=top 
+OUT_INFO_Title: 建议春节假期延长两到三天 
+OUT_INFO_热度: 1154812
+ACT_INFO:等待JS...
+ACT_INFO:等待Driver...
+OUT_INFO_Len: 10 10 10
+OUT_INFO_数据写入:--OK!
+OUT_INFO_序列:正在抓取第5个话题,当前进度为：16%
+OUT_INFO_Url: https://s.weibo.com/weibo?q=%23%E6%9C%89%E6%9D%91%E6%9E%B6%E7%BA%AF%E5%A7%90%E5%A7%90%E6%95%B4%E5%AE%B9%23&amp;Refer=top 
+OUT_INFO_Title: 有村架纯姐姐整容 
+OUT_INFO_热度: 811528
+ACT_INFO:等待JS...
+ACT_INFO:等待Driver...
+OUT_INFO_Len: 15 15 15
+OUT_INFO_数据写入:--OK!
+OUT_INFO_序列:正在抓取第6个话题,当前进度为：20%
+OUT_INFO_Url: https://s.weibo.com/weibo?q=%23%E5%88%9B1%E5%88%9B2%E5%AE%BF%E8%88%8D%E5%AF%B9%E6%AF%94%23&amp;Refer=top 
+OUT_INFO_Title: 创1创2宿舍对比 
+OUT_INFO_热度: 1148313
+ACT_INFO:等待JS...
+ACT_INFO:等待Driver...
+OUT_INFO_Len: 15 15 15
+OUT_INFO_数据写入:--OK!
+OUT_INFO_序列:正在抓取第7个话题,当前进度为：23%
+OUT_INFO_Url: https://s.weibo.com/weibo?q=%23%E8%AE%B8%E5%87%AF%E8%AF%B4%E6%88%91%E4%B9%9F%E5%8F%AF%E4%BB%A5%23&amp;Refer=top 
+OUT_INFO_Title: 许凯说我也可以 
+OUT_INFO_热度: 801128
+ACT_INFO:等待JS...
+ACT_INFO:等待Driver...
+OUT_INFO_Len: 15 15 15
+OUT_INFO_数据写入:--OK!
+OUT_INFO_序列:正在抓取第8个话题,当前进度为：26%
+OUT_INFO_Url: https://s.weibo.com/weibo?q=%23%E6%9C%89%E6%9D%91%E6%9E%B6%E7%BA%AF%E5%A7%90%E5%A7%90%E6%95%B4%E5%AE%B9%23&amp;Refer=top 
+OUT_INFO_Title: 有村架纯姐姐整容 
+OUT_INFO_热度: 800754
+ACT_INFO:等待JS...
+ACT_INFO:等待Driver...
+OUT_INFO_Len: 15 15 15
+OUT_INFO_数据写入:--OK!
+OUT_INFO_序列:正在抓取第9个话题,当前进度为：30%
+OUT_INFO_Url: https://s.weibo.com/weibo?q=%2398%E5%B2%81%E5%90%83%E8%B4%A7%E5%A5%B6%E5%A5%B6%E6%9C%80%E7%88%B1%E7%81%AB%E9%94%85%E5%8F%AF%E4%B9%90%23&amp;Refer=top 
+OUT_INFO_Title: 98岁吃货奶奶最爱火锅可乐  
+OUT_INFO_热度: 
+
+ACT_INFO:等待JS...
+ACT_INFO:等待Driver...
+OUT_INFO_Len: 15 15 15
+OUT_INFO_数据写入:--OK!
+OUT_INFO_序列:正在抓取第10个话题,当前进度为：33%
+OUT_INFO_Url: https://s.weibo.com/weibo?q=%23%E5%88%9B2%E5%AE%BF%E8%88%8D%E6%98%AF%E5%86%9B%E8%AE%AD%E5%A4%A7%E9%80%9A%E9%93%BA%23&amp;Refer=top 
+OUT_INFO_Title: 创2宿舍是军训大通铺 
+OUT_INFO_热度: 411690
+ACT_INFO:等待JS...
+ACT_INFO:等待Driver...
+OUT_INFO_Len: 15 15 15
+OUT_INFO_数据写入:--OK!
+OUT_INFO_序列:正在抓取第11个话题,当前进度为：36%
+OUT_INFO_Url: https://s.weibo.com/weibo?q=%23%E5%88%9B2%E5%AE%BF%E8%88%8D%E6%98%AF%E5%86%9B%E8%AE%AD%E5%A4%A7%E9%80%9A%E9%93%BA%23&amp;Refer=top 
+OUT_INFO_Title: 创2宿舍是军训大通铺 
+OUT_INFO_热度: 407966
+ACT_INFO:等待JS...
+ACT_INFO:等待Driver...
+OUT_INFO_Len: 15 15 15
+OUT_INFO_数据写入:--OK!
+OUT_INFO_序列:正在抓取第12个话题,当前进度为：40%
+OUT_INFO_Url: https://s.weibo.com/weibo?q=%23%E5%88%9B2%E5%AE%BF%E8%88%8D%E6%98%AF%E5%86%9B%E8%AE%AD%E5%A4%A7%E9%80%9A%E9%93%BA%23&amp;Refer=top 
+OUT_INFO_Title: 创2宿舍是军训大通铺 
+OUT_INFO_热度: 405636
+ACT_INFO:等待JS...
+ACT_INFO:等待Driver...
+OUT_INFO_Len: 15 15 15
+OUT_INFO_数据写入:--OK!
+OUT_INFO_序列:正在抓取第13个话题,当前进度为：43%
+OUT_INFO_Url: https://s.weibo.com/weibo?q=%23%E5%8E%BBKTV%E7%82%B9%E6%AD%8C%E5%B0%B1%E6%8B%BF%E5%87%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E6%89%8B%E6%9C%BA%23&amp;Refer=top 
+OUT_INFO_Title: 去KTV点歌就拿出自己的手机 
+OUT_INFO_热度: 362027
+ACT_INFO:等待JS...
+ACT_INFO:等待Driver...
+OUT_INFO_Len: 15 15 15
+OUT_INFO_数据写入:--OK!
+OUT_INFO_序列:正在抓取第14个话题,当前进度为：46%
+OUT_INFO_Url: https://s.weibo.com/weibo?q=%23%E5%9B%BD%E4%B9%92%E6%95%99%E7%BB%83%E6%AC%A2%E8%BF%8E%E5%BC%A0%E7%BB%A7%E7%A7%91%E5%9B%9E%E5%BD%92%23&amp;Refer=top 
+OUT_INFO_Title: 国乒教练欢迎张继科回归 
+OUT_INFO_热度: 271189
+ACT_INFO:等待JS...
+ACT_INFO:等待Driver...
+OUT_INFO_Len: 0 0 0
+===ERROR_003===：网络出现延时，数据可能不完整！
+OUT_INFO_序列:正在抓取第15个话题,当前进度为：50%
+OUT_INFO_Url: https://s.weibo.com/weibo?q=niko&amp;Refer=top 
+OUT_INFO_Title: niko 
+OUT_INFO_热度: 326673
+ACT_INFO:等待JS...
+ACT_INFO:等待Driver...
+OUT_INFO_Len: 15 15 15
+OUT_INFO_数据写入:--OK!
+OUT_INFO_序列:正在抓取第16个话题,当前进度为：53%
+OUT_INFO_Url: https://s.weibo.com/weibo?q=%23%E5%9B%BD%E4%B9%92%E6%95%99%E7%BB%83%E6%AC%A2%E8%BF%8E%E5%BC%A0%E7%BB%A7%E7%A7%91%E5%9B%9E%E5%BD%92%23&amp;Refer=top 
+OUT_INFO_Title: 国乒教练欢迎张继科回归 
+OUT_INFO_热度: 265175
+ACT_INFO:等待JS...
+ACT_INFO:等待Driver...
+OUT_INFO_Len: 3 3 3
+OUT_INFO_数据写入:--OK!
+OUT_INFO_序列:正在抓取第17个话题,当前进度为：56%
+OUT_INFO_Url: https://s.weibo.com/weibo?q=%23%E5%BD%93%E5%89%8D%E5%9D%9A%E6%8C%819%E5%B9%B4%E4%B9%89%E5%8A%A1%E6%95%99%E8%82%B2%E4%B8%8D%E5%8F%98%23&amp;Refer=top 
+OUT_INFO_Title: 当前坚持9年义务教育不变 
+OUT_INFO_热度: 263231
+ACT_INFO:等待JS...
+ACT_INFO:等待Driver...
+OUT_INFO_Len: 15 15 15
+OUT_INFO_数据写入:--OK!
+OUT_INFO_序列:正在抓取第18个话题,当前进度为：60%
+OUT_INFO_Url: https://s.weibo.com/weibo?q=%23%E5%A8%83%E5%93%88%E5%93%88AD%E9%92%99%E5%A5%B6%E6%A0%87%E8%AF%AD%23&amp;Refer=top 
+OUT_INFO_Title: 娃哈哈AD钙奶标语 
+OUT_INFO_热度: 258794
+ACT_INFO:等待JS...
+ACT_INFO:等待Driver...
+OUT_INFO_Len: 15 15 15
+OUT_INFO_数据写入:--OK!
+OUT_INFO_序列:正在抓取第19个话题,当前进度为：63%
+OUT_INFO_Url: https://s.weibo.com/weibo?q=%23%E5%9B%9B%E5%B7%9D%E5%A4%A7%E5%AD%A6%E5%A4%8D%E8%AF%95%E7%BA%BF%E6%B6%A8%E4%BA%86%23&amp;Refer=top 
+OUT_INFO_Title: 四川大学复试线涨了 
+OUT_INFO_热度: 257203
+ACT_INFO:等待JS...
+ACT_INFO:等待Driver...
+OUT_INFO_Len: 15 15 15
+OUT_INFO_数据写入:--OK!
+OUT_INFO_序列:正在抓取第20个话题,当前进度为：66%
+OUT_INFO_Url: https://s.weibo.com/weibo?q=%23%E9%87%91%E7%A7%80%E8%B4%A4%E7%8E%89%E6%B3%BD%E6%BC%94%E6%99%8B%E5%8D%87%E5%85%B5%E9%95%BF%23&amp;Refer=top 
+OUT_INFO_Title: 金秀贤玉泽演晋升兵长 
+OUT_INFO_热度: 255782
+ACT_INFO:等待JS...
+ACT_INFO:等待Driver...
+OUT_INFO_Len: 15 15 15
+OUT_INFO_数据写入:--OK!
+OUT_INFO_序列:正在抓取第21个话题,当前进度为：70%
+OUT_INFO_Url: https://s.weibo.com/weibo?q=VOGUE%E4%B8%AD%E5%9B%BD%E6%A8%A1%E7%89%B9&amp;Refer=top 
+OUT_INFO_Title: VOGUE中国模特 
+OUT_INFO_热度: 254928
+ACT_INFO:等待JS...
+ACT_INFO:等待Driver...
+OUT_INFO_Len: 15 15 15
+OUT_INFO_数据写入:--OK!
+OUT_INFO_序列:正在抓取第22个话题,当前进度为：73%
+OUT_INFO_Url: https://s.weibo.com/weibo?q=%23%E9%AB%98%E7%80%9A%E5%AE%87%23&amp;Refer=top 
+OUT_INFO_Title: 高瀚宇 
+OUT_INFO_热度: 251658
+ACT_INFO:等待JS...
+ACT_INFO:等待Driver...
+OUT_INFO_Len: 15 15 15
+OUT_INFO_数据写入:--OK!
+OUT_INFO_序列:正在抓取第23个话题,当前进度为：76%
+OUT_INFO_Url: https://s.weibo.com/weibo?q=%E7%8E%8B%E6%80%9D%E8%81%AA&amp;Refer=top 
+OUT_INFO_Title: 王思聪  
+OUT_INFO_热度: 
+
+ACT_INFO:等待JS...
+ACT_INFO:等待Driver...
+OUT_INFO_Len: 15 15 15
+OUT_INFO_数据写入:--OK!
+OUT_INFO_序列:正在抓取第24个话题,当前进度为：80%
+OUT_INFO_Url: https://s.weibo.com/weibo?q=%23%E5%8D%9C%E5%87%A1%E8%BF%98%E4%B8%8D%E8%90%A5%E4%B8%9A%23&amp;Refer=top 
+OUT_INFO_Title: 卜凡还不营业 
+OUT_INFO_热度: 245866
+ACT_INFO:等待JS...
+ACT_INFO:等待Driver...
+OUT_INFO_Len: 2 2 2
+OUT_INFO_数据写入:--OK!
+OUT_INFO_序列:正在抓取第25个话题,当前进度为：83%
+OUT_INFO_Url: https://s.weibo.com/weibo?q=%23%E6%9C%80%E8%AE%A9%E4%BA%BA%E8%AF%AF%E8%A7%A3%E7%9A%84%E5%A4%A7%E5%AD%A6%E4%B8%93%E4%B8%9A%23&amp;Refer=top 
+OUT_INFO_Title: 最让人误解的大学专业  
+OUT_INFO_热度: 
+
+ACT_INFO:等待JS...
+ACT_INFO:等待Driver...
+OUT_INFO_Len: 15 15 15
+OUT_INFO_数据写入:--OK!
+OUT_INFO_序列:正在抓取第26个话题,当前进度为：86%
+OUT_INFO_Url: https://s.weibo.com/weibo?q=%23Vicky%E6%BE%84%E6%B8%85%E8%A7%86%E9%A2%91%23&amp;Refer=top 
+OUT_INFO_Title: Vicky澄清视频 
+OUT_INFO_热度: 193988
+===ERROR_000===:第26个话题抓取出现错误
+请检查网络至新浪服务器的连接或进行等待
+OUT_INFO_序列:正在抓取第27个话题,当前进度为：90%
+OUT_INFO_Url: https://s.weibo.com/weibo?q=%23%E6%9C%80%E8%AE%A9%E4%BA%BA%E8%AF%AF%E8%A7%A3%E7%9A%84%E5%A4%A7%E5%AD%A6%E4%B8%93%E4%B8%9A%23&amp;Refer=top 
+OUT_INFO_Title: 最让人误解的大学专业  
+OUT_INFO_热度: 
+
+ACT_INFO:等待JS...
+ACT_INFO:等待Driver...
+OUT_INFO_Len: 15 15 15
+OUT_INFO_数据写入:--OK!
+OUT_INFO_序列:正在抓取第28个话题,当前进度为：93%
+OUT_INFO_Url: https://s.weibo.com/weibo?q=%23%E5%B9%B4%E8%BD%BB%E4%BA%BA%E7%9A%84%E5%85%B8%E5%9E%8B%E5%B9%BC%E7%A8%9A%E7%97%85%23&amp;Refer=top 
+OUT_INFO_Title: 年轻人的典型幼稚病 
+OUT_INFO_热度: 161747
+ACT_INFO:等待JS...
+ACT_INFO:等待Driver...
+OUT_INFO_Len: 2 2 2
+OUT_INFO_数据写入:--OK!
+OUT_INFO_序列:正在抓取第29个话题,当前进度为：96%
+OUT_INFO_Url: https://s.weibo.com/weibo?q=%23%E7%87%83%E7%83%A7%E7%9A%84%E9%99%80%E8%9E%BA%E4%BB%AA%23&amp;Refer=top 
+OUT_INFO_Title: 燃烧的陀螺仪 
+OUT_INFO_热度: 161559
+ACT_INFO:等待JS...
+ACT_INFO:等待Driver...
+OUT_INFO_Len: 15 15 15
+OUT_INFO_数据写入:--OK!
+OUT_INFO:执行完毕！
