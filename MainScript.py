@@ -28,7 +28,7 @@ def hotPointList(i):
     info = urlMain + top_varurl, top_title, top_hotNum
 
     # 测试输出
-    print("OUT_INFO_Url", info[0], "\nOUT_INFO_Title", info[1], "\nOUT_INFO_热度", info[2])
+    print("OUT_INFO_Url:", info[0], "\nOUT_INFO_Title:", info[1], "\nOUT_INFO_热度:", info[2])
 
     return info
     # info中第一个为链接 第二个为话题标题 第三为热度
@@ -140,7 +140,7 @@ def __init__():
         print("ACT_INFO:启动浏览器ing...")
         driver = webdriver.Firefox(scriptTool.workPath() + 'exe/core/', firefox_options=firefoxOpt)
         for i in range(1, 30):
-
+            print("OUT_INFO_序列:正在抓取第%s个话题"%i)
             try:
                 info = hotPointList(i)  # 加载热点排行榜url传递给热门微博文章提取函数
                 writeinfo = ("--------------------" + "\n" + "|第" + str(i) + "个题标题为：" + info[1] + "|热度为：" + info[2])
