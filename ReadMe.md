@@ -25,9 +25,11 @@ venv372x64win---虚拟环境目录
 
 MainScript.py---主脚本
 
-exe--框架所需部分环境
+exe---框架所需部分环境
 
-data--数据存放目录
+data---数据存放目录
+
+scriptTool.py---工具集
 
 DeBug--控制台输出记录存放目录
 
@@ -59,7 +61,7 @@ DeBug--控制台输出记录存放目录
 
 **传入对象**：str类型-搜索页Url
  
-例：https://s.weibo.com/weibo?q=%23%E5%A7%9C%E4%B8%B9%E5%B0%BC%E5%B0%94%E8%A6%81%E6%B1%82%E8%A7%A3%E7%BA%A6%23&amp;Refer=top
+例：'https://s.weibo.com/weibo?q=%23%E5%A7%9C%E4%B8%B9%E5%B0%BC%E5%B0%94%E8%A6%81%E6%B1%82%E8%A7%A3%E7%BA%A6%23&amp;Refer=top'
 
 **返回对象**：列表[微博详细页面Url 1、2、3...]
 
