@@ -114,7 +114,7 @@ def weiBoInfo(url, driver):
         if (len(find_IDList) == len(find_commentList) and len(find_TimeList)):
             print("OUT_INFO_数据写入:--OK!")
         else:
-            print("OUT_INFO_网络出现延时:数据可能不完整！")
+            print("OUT_ERROR_003：网络出现延时，数据可能不完整！")
         num = 0
         if (len(find_IDList) > len(find_commentList)):
             num = len(find_commentList)
@@ -135,26 +135,38 @@ def weiBoInfo(url, driver):
 def __init__():
     # 生产模式
     def work():
-        firefoxOpt = Options()  # 载入配置
-        firefoxOpt.add_argument("--headless")
-        print("ACT_INFO:启动浏览器ing...")
-        driver = webdriver.Firefox(scriptTool.workPath() + 'exe/core/', firefox_options=firefoxOpt)
-        for i in range(1, 30):
-            print("OUT_INFO_序列:正在抓取第%s个话题"%i)
+        try:
+            firefoxOpt = Options()  # 载入配置
+            firefoxOpt.add_argument("--headless")
+            print("ACT_INFO:启动浏览器ing...")
+            driver = webdriver.Firefox(scriptTool.workPath() + 'exe/core/', firefox_options=firefoxOpt)
+            print("OUT_INFO:浏览器启动成功！")
+        except:
+            print("OUT_ERROR_002:浏览器配置出现错误 程序即将退出！")
+            return "002"
+
+        Num = input("OUT_INFO:输入需要抓取话题的数量:\nIN_INT_Number:")
+        for i in range(1, int(Num)):
+            print("OUT_INFO_序列:正在抓取第%s个话题,当前进度为：" % i + str(
+                lambda i: str(i / float(Num) * 100)[:2]) + "%")  # 此处Lamdba表达式为输出百分比
             try:
                 info = hotPointList(i)  # 加载热点排行榜url传递给热门微博文章提取函数
                 writeinfo = ("--------------------" + "\n" + "|第" + str(i) + "个题标题为：" + info[1] + "|热度为：" + info[2])
                 timea = time.strftime("%Y-%m-%d-%H:%M", time.localtime())  # 获取当前时间
-                with open("./data/Data.txt", 'at', encoding='utf-8') as f:  # wt为不能追加 此处用at
-                    f.writelines("\n" + "时间为：" + str(timea) + "\n")
+                timeb=time.strftime("%Y-%m-%d-%H-%M", time.localtime())
+                with open("./data/%sData.txt"%timeb, 'at', encoding='utf-8') as f:  # wt为不能追加 此处用at
+                    f.writelines("URL:"+str(info[0]) + "\n")
+                    f.writelines("OUT_INFO_时间：" + str(timea) + "\n")
                     f.writelines("微博内容为：" + writeinfo + "\n")
                 hoturl = hotTexturl(info[0])  # 热点话题链接
 
                 # 话题链接传入
                 weiBoInfo(hoturl, driver)
             except:
-                print("第%s出现错误 错误代码Error---000\n请检查网络至新浪服务器的连接或进行等待" % i)
+                print("OUT_ERROR_000:第%s出现错误\n请检查网络至新浪服务器的连接或进行等待" % i)
                 continue
+
+
 
     # 调试模式
     def debug():
@@ -165,8 +177,8 @@ def __init__():
 
         timea = time.strftime("%Y-%m-%d-%H:%M", time.localtime())  # 获取当前时间
         with open("./data/Data.txt", 'at', encoding='utf-8') as f:  # wt为不能追加 此处用at
-            f.writelines("时间为：" + str(timea) + "\n")
-            f.writelines("微博内容为：" + writeinfo + "\n")
+            f.writelines("OUT_INFO_时间：" + str(timea) + "\n")
+            f.writelines("OUT_INFO_微博内容：" + writeinfo + "\n")
         hoturl = hotTexturl(info[0])  # 热点话题链接
 
         # 话题链接传入
