@@ -9,41 +9,41 @@ _**信息收集**_
 
 _**使用环境**_
 
-Python 3.7
+* Python 3.7
 
-beautifulsuop4
+* beautifulsuop4
 
-lxml
+* lxml
 
-Selenium
+* Selenium
 
-Firefox x64
+* Firefox x64
 
 _**目录结构**_
 
-venv372x64win---虚拟环境目录
+* venv372x64win---虚拟环境目录
 
-MainScript.py---主脚本
+* MainScript.py---主脚本
 
-exe---框架所需部分环境
+* exe---框架所需部分环境
 
-data---数据存放目录
+* data---数据存放目录
 
-scriptTool.py---工具集
+* scriptTool.py---工具集
 
-DeBug--控制台输出记录存放目录
+* DeBug--控制台输出记录存放目录
 
 **_注意事项_**
 
-1.需要自行安装geckodriver-v0.23.0-win64到虚拟环境或实体环境
+* 1.需要自行安装geckodriver-v0.23.0-win64到虚拟环境或实体环境
 
-2.若在等待JS之后出现错误 请尝试更改 JS、Driver的等待时间
+* 2.若在等待JS之后出现错误 请尝试更改 JS、Driver的等待时间
 
-3.data下的文件在Windows下可能需要手动创建Utf-8编码格式 否则不能正确写入
+* 3.data下的文件在Windows下可能需要手动创建Utf-8编码格式 否则不能正确写入
 
 **_API_**
 
-1、`MainScript.hotPointList 解析热点榜 返回指定热点链接、话题、以及热度` 
+* 1、`MainScript.hotPointList 解析热点榜 返回指定热点链接、话题、以及热度` 
 
 **传入对象**：int值-所选热点的序号 
 
@@ -57,7 +57,7 @@ DeBug--控制台输出记录存放目录
 
 '930085']
 
-2、`MainScript.hotTexturl 解析话题搜索页内热门微博Url`
+* 2、`MainScript.hotTexturl 解析话题搜索页内热门微博Url`
 
 **传入对象**：str类型-搜索页Url
  
@@ -65,7 +65,7 @@ DeBug--控制台输出记录存放目录
 
 **返回对象**：列表[微博详细页面Url 1、2、3...]
 
-3、`MainScript.weiBoInfo 解析微博评论数据`
+* 3、`MainScript.weiBoInfo 解析微博评论数据`
 
 **传入对象**：str类型-微博详细页Url,Selenium的浏览器对象
 
